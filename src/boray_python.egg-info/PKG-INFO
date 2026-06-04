@@ -1,0 +1,43 @@
+Metadata-Version: 2.4
+Name: boray-python
+Version: 0.1.0
+Summary: Python port of the BORAY axisymmetric plasma ray-tracing code.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: matplotlib>=3.9
+Requires-Dist: numpy>=2.0
+Requires-Dist: scipy>=1.14
+Provides-Extra: io
+Requires-Dist: netCDF4>=1.7; extra == "io"
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3; extra == "dev"
+
+# BORAY Python
+
+This directory contains a Python port of the MATLAB code from [`hsxie/boray`](https://github.com/hsxie/boray).
+
+The port keeps the original structure but expresses it as a small Python package:
+
+- `boray.equilibrium`
+  Bilinear interpolation and numerical equilibrium sampling.
+- `boray.solovev`
+  Analytical Solovev equilibrium generation.
+- `boray.dispersion`
+  Cold and hot plasma dispersion solvers plus Hamiltonian derivatives.
+- `boray.tracing`
+  Initial `k_r` solve, RK4 ray tracing, and power-absorption post-processing.
+- `boray.plotting`
+  Ray and power plots analogous to the MATLAB figures.
+- `boray.io`
+  MATLAB `.mat` equilibrium loading and auxiliary data readers.
+
+Quick start from this folder:
+
+```powershell
+& 'C:\Users\khand\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m pip install -e .[dev]
+& 'C:\Users\khand\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m boray.cli --help
+```
+
+The example presets expect the cloned MATLAB repository to remain adjacent at:
+
+`../boray_matlab`

@@ -1,0 +1,2 @@
+[console_scripts]
+boray = boray.cli:main
